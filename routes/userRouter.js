@@ -28,7 +28,7 @@ router.post('/', [
         const userExist = await UserModel.findOne({email: userData.email})
         // if user exist we return!
         if (userExist) {
-            return res.json({msg: "User already exist!"})
+            return res.json({msg: "User already exists!"})
         }
 
         //* ==== Create New User
@@ -47,8 +47,9 @@ router.post('/', [
             id: user._id,
             email: user.email
         }
+        //const SECRET_KEY='MY_SECRET_KEY'
 
-        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "2 Days"})
+        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: "2 Days"})
 
         res.status(201).json({
             user: user,

@@ -16,7 +16,7 @@ router.get('/',  async (req, res) => {
 })
 
 //* CREATE Blogs
-router.post('/', async (req, res) => {
+router.post('/', authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
     console.log(blogData);
     try {
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 })
 
 
-//* GET TODO BY ID
+//* GET BLOG BY ID
 router.get('/:id', authMiddleware, async (req, res) => {
     const id = req.params.id
 
@@ -47,20 +47,20 @@ router.get('/:id', authMiddleware, async (req, res) => {
 })
 
 
-//* UPDATE TODO BY ID
+//* UPDATE BLOG BY ID
 router.put('/:id',authMiddleware, async (req, res) => {
     const id = req.params.id
     const newBlogData = req.body
      try {
          //* find the todo by the id
-         const blogs = await blogModel.findByIdAndUpdate(id, newblogData, {new: true})
+         const blogs = await blogModel.findByIdAndUpdate(id, newBlogData, {new: true})
          res.status(202).json(blogs)
      } catch (error) {
          console.log(error)
      }
 })
 
-//! DELETE A TODO
+//! DELETE A BLOG BY ID
 router.delete('/:id', authMiddleware, async (req, res) => {
     const id = req.params.id
 
