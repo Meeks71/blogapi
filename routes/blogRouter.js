@@ -1,6 +1,6 @@
 const express = require('express')
 const blogModel = require('../models/blogSchema')
-const authMiddleware = require('../middleware/authMiddleware')
+const authMiddleware = require('../middleWare/authMiddleware')
 
 // * Create a Router
 const router = express.Router()
