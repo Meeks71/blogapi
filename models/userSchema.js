@@ -20,7 +20,7 @@ username:{
 
     age: {
         type: Number,
-        required: true
+        required: false
         
     },
     password: { 

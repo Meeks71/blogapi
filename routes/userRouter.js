@@ -49,7 +49,7 @@ router.post('/', [
         }
         //const SECRET_KEY='MY_SECRET_KEY'
 
-        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: "2 Days"})
+        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: "10 Days"})
 
         res.status(201).json({
             user: user,
